@@ -1,0 +1,27 @@
+name: Official plugin catalog
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - run: python3 scripts/build.py
+      - name: Publish the rolling catalog release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view catalog >/dev/null 2>&1; then
+            gh release create catalog --title "Official plugin catalog" --notes "Versioned official Oikome plugin packages."
+          fi
+          gh release upload catalog dist/* --clobber

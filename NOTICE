@@ -1,0 +1,5 @@
+Oikome Plugins
+Copyright 2025 The Oikome Authors
+
+This repository contains official Oikome plugin packages and catalog tooling.
+No third-party runtime libraries are bundled into the generated packages.

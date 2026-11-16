@@ -1,0 +1,51 @@
+{
+  "id": "note-count",
+  "name": "Note count",
+  "by": "Oikome",
+  "version": "1.0.0",
+  "description": "Show how many notes the collections you chose hold, and how many arrived in the last seven days.",
+  "capabilities": {
+    "cards": [
+      {
+        "id": "count",
+        "name": "Note count",
+        "reads": "Notes, with their text and creation dates",
+        "shape": "any",
+        "columns": ["date", "text"],
+        "width": 4,
+        "height": 200,
+        "entry": "index.html"
+      }
+    ]
+  },
+  "translations": {
+    "de": {
+      "description": "Zeigt, wie viele Notizen die gewählten Sammlungen enthalten und wie viele in den letzten sieben Tagen hinzukamen.",
+      "cards": { "count": { "name": "Notizanzahl", "reads": "Notizen mit Text und Erstellungsdatum" } }
+    },
+    "fr": {
+      "description": "Montre combien de notes contiennent les collections choisies et combien sont arrivées au cours des sept derniers jours.",
+      "cards": { "count": { "name": "Nombre de notes", "reads": "Notes avec leur texte et leur date de création" } }
+    },
+    "ja": {
+      "description": "選択したコレクションのノート数と、過去 7 日間に追加された数を表示します。",
+      "cards": { "count": { "name": "ノート数", "reads": "ノートの本文と作成日" } }
+    },
+    "ko": {
+      "description": "선택한 컬렉션의 노트 수와 지난 7일 동안 추가된 수를 보여 줘요.",
+      "cards": { "count": { "name": "노트 수", "reads": "노트의 텍스트와 작성 날짜" } }
+    },
+    "ru": {
+      "description": "Показывает число заметок в выбранных коллекциях и сколько добавлено за последние семь дней.",
+      "cards": { "count": { "name": "Число заметок", "reads": "Заметки, их текст и даты создания" } }
+    },
+    "zh-Hans": {
+      "description": "显示所选资料库中的笔记数量，以及最近七天新增的数量。",
+      "cards": { "count": { "name": "笔记数量", "reads": "笔记正文和创建日期" } }
+    },
+    "zh-Hant": {
+      "description": "顯示所選資料庫中的筆記數量，以及最近七天新增的數量。",
+      "cards": { "count": { "name": "筆記數量", "reads": "筆記正文和建立日期" } }
+    }
+  }
+}
