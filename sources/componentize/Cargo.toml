@@ -1,0 +1,13 @@
+# Makes a WebAssembly module built from a plugin's source into the component
+# Oikome runs: `componentize <module.wasm> <component.wasm>`.
+[package]
+name = "componentize"
+version = "0.0.0"
+edition = "2021"
+license = "Apache-2.0"
+publish = false
+
+[dependencies]
+wit-component = "0.263"
+
+[workspace]
