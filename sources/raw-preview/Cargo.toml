@@ -1,0 +1,26 @@
+# The RAW Preview plugin's code: a WebAssembly component of the world
+# `preview` (wit/preview.wit). `scripts/build-raw-preview.sh` builds it for
+# wasm32-unknown-unknown, makes it a component and writes
+# packages/raw-preview/preview.wasm, which is the file Oikome runs.
+# `cargo test` here tries the reader on this computer.
+[package]
+name = "oikome-raw-preview"
+version = "1.0.0"
+edition = "2021"
+license = "Apache-2.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wit-bindgen = { version = "0.63", default-features = false, features = ["macros", "realloc"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+strip = true
+panic = "abort"
+codegen-units = 1
+
+[workspace]

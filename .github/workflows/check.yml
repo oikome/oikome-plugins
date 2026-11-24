@@ -1,0 +1,22 @@
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - run: python3 scripts/build.py
+      - name: RAW Preview's reader
+        working-directory: sources/raw-preview
+        run: cargo test --locked

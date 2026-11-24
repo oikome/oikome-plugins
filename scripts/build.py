@@ -22,6 +22,10 @@ def read_manifest(package: Path) -> dict:
     cards = capabilities.get("cards", [])
     for card in cards:
         assert (package / card["entry"]).is_file()
+    # A preview's code is in the package: the built component it names.
+    for preview in capabilities.get("preview", []):
+        if "entry" in preview:
+            assert (package / preview["entry"]).read_bytes().startswith(b"\0asm")
     assert cards or capabilities.get("sources") or capabilities.get("preview") or capabilities.get("mcpClients")
     return manifest
 

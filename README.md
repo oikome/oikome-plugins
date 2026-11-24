@@ -28,10 +28,27 @@ its Home card and explicitly choose what it may read.
 ## Package kinds
 
 Dashboard cards use the existing browser sandbox. Source declarations configure
-existing node connectors without loading package code. Preview declarations are
-metadata only until a separate host sandbox exists. MCP client declarations use
-the generic manual/JSON/TOML setup flow. No capability inherits another kind's
-runtime privileges.
+existing node connectors without loading package code. A preview that names an
+`entry` runs that WebAssembly component in the node's sandbox, once per file: it
+reads the one file it is given and nothing else, within the node's limits of
+memory, time and result size; a preview without an entry is metadata only. MCP
+client declarations use the generic manual/JSON/TOML setup flow. No capability
+inherits another kind's runtime privileges.
+
+## Packages with code
+
+A package ships only what Oikome loads: its manifest, web files and built
+components. The source of a component is in `sources/<id>/`, outside the
+package, with the contract it is built against (`wit/preview.wit`, a copy of
+the main repository's `crates/oikome-sandbox/wit/preview.wit`).
+
+`sources/raw-preview` is RAW Preview: the JPEG a camera stored inside its RAW
+file (CR2, CR3, NEF, ARW, DNG, ORF, PEF, RAF), taken out as it is. Nothing is
+developed and no RAW decoder is used. `scripts/build-raw-preview.sh` runs its
+tests, builds it for `wasm32-unknown-unknown` and writes
+`packages/raw-preview/preview.wasm`, which is committed: the catalog workflow
+packages what is in `packages/` and builds no code. Change the source and the
+component together.
 
 ## Add an official package
 
